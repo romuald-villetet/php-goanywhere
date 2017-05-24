@@ -1,0 +1,30 @@
+<?php
+
+$finder = new PhpCsFixer\Finder();
+$config = new PhpCsFixer\Config('GoAnyWhere', 'GoAnyWhere style guide');
+
+$finder
+    ->in(__DIR__)
+;
+
+$config
+    ->setRules([
+        // default
+        '@PSR2' => true,
+        '@Symfony' => true,
+        // additionally
+        'concat_space' => ['spacing' => 'one'],
+        'no_unused_imports' => false,
+        'no_useless_else' => true,
+        'no_useless_return' => true,
+        'ordered_imports' => true,
+        'phpdoc_align' => false,
+        'phpdoc_order' => true,
+        'phpdoc_summary' => false,
+        'array_syntax' => ['syntax' => 'short'],
+        'simplified_null_return' => false,
+    ])
+    ->setFinder($finder)
+;
+
+return $config;
