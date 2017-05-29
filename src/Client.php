@@ -11,6 +11,8 @@ use Http\Discovery\MessageFactoryDiscovery;
 use Http\Message\MessageFactory;
 
 /**
+ * @method Api\Monitors monitors()
+ * @method Api\Projects projects()
  * @method Api\SshKeys sshkeys()
  * @method Api\WebGroups webgroups()
  * @method Api\WebUsers webusers()
@@ -69,6 +71,12 @@ final class Client
     public function api($name)
     {
         switch ($name) {
+            case 'monitors':
+                return new Api\Monitors($this->httpClient, $this->messageFactory);
+
+            case 'projects':
+                return new Api\Projects($this->httpClient, $this->messageFactory);
+
             case 'sshkeys':
                 return new Api\SshKeys($this->httpClient, $this->messageFactory);
 
