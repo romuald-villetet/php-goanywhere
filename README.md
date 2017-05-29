@@ -20,13 +20,19 @@ $ composer require alcohol/php-goanywhere
 
 require_once 'vendor/autoload.php';
 
-$httpClient = (new Alcohol\GoAnywhere\HttpClient\Builder())
-    ->withEndpoint('http://localhost:8001/goanywhere/rest/gacmd/v1')
-    ->withCredentials('username', 'password')
-    ->getConfiguredHttpClient()
-;
+$endpoint = 'http://localhost:8001/goanywhere/rest/gacmd/v1';
+$username = 'foo';
+$password = 'bar';
 
+// customizable
+$httpClient = (new Alcohol\GoAnywhere\HttpClient\Builder())
+    ->withEndpoint($endpoint)
+    ->withCredentials($username, $password)
+    ->getConfiguredHttpClient();
 $apiClient = new Alcohol\GoAnywhere\Client($httpClient);
+
+// convenient shortcut
+$apiClient = Alcohol\GoAnywhere\Client::create($endpoint, $username, $password);
 
 try {
     $client->webusers()->addUser(['addParameters' => ['template' => 'my-template', 'username' => 'Foo']]);
