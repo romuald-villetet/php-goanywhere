@@ -178,7 +178,7 @@ final class WebGroups extends HttpApi
         );
 
         if (400 <= $response->getStatusCode()) {
-            throw new HttpException($response->getStatusCode(), $response->getBody()->getContents());
+            throw new HttpException($response->getStatusCode(), $response->getBody()->__toString());
         }
     }
 
@@ -197,7 +197,7 @@ final class WebGroups extends HttpApi
         $response = $this->put(sprintf('/webgroups/%s/virtualfolders', urlencode($group)), $parameters);
 
         if (400 <= $response->getStatusCode()) {
-            throw new HttpException($response->getStatusCode(), $response->getBody()->getContents());
+            throw new HttpException($response->getStatusCode(), $response->getBody()->__toString());
         }
     }
 }

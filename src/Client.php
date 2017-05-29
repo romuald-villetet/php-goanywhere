@@ -4,19 +4,11 @@ namespace Alcohol\GoAnywhere;
 
 use Alcohol\GoAnywhere\Exception\BadMethodCallException;
 use Alcohol\GoAnywhere\Exception\InvalidArgumentException;
-use Alcohol\GoAnywhere\HttpClient\Plugin\PathPrepend;
-use Http\Client\Common\Plugin\AddHostPlugin;
-use Http\Client\Common\Plugin\AuthenticationPlugin;
-use Http\Client\Common\Plugin\HeaderDefaultsPlugin;
-use Http\Client\Common\Plugin\RedirectPlugin;
-use Http\Client\Common\PluginClient;
+use Alcohol\GoAnywhere\HttpClient\Builder;
 use Http\Client\HttpClient;
 use Http\Discovery\HttpClientDiscovery;
 use Http\Discovery\MessageFactoryDiscovery;
-use Http\Discovery\UriFactoryDiscovery;
-use Http\Message\Authentication\BasicAuth;
 use Http\Message\MessageFactory;
-use Http\Message\UriFactory;
 
 /**
  * @method Api\SshKeys sshkeys()
@@ -33,42 +25,32 @@ final class Client
      * @var \Http\Message\MessageFactory
      */
     private $messageFactory;
-    /**
-     * @var \Http\Message\UriFactory
-     */
-    private $uriFactory;
 
     /**
-     * @param string $hostname
-     * @param string $username
-     * @param string $password
-     * @param string $apiVersion
      * @param \Http\Client\HttpClient|null $httpClient
      * @param \Http\Message\MessageFactory|null $messageFactory
-     * @param \Http\Message\UriFactory|null $uriFactory
      */
-    public function __construct(
-        $hostname,
-        $username,
-        $password,
-        $apiVersion = 'v1',
-        HttpClient $httpClient = null,
-        MessageFactory $messageFactory = null,
-        UriFactory $uriFactory = null
-    ) {
-        $httpClient = $httpClient ?: HttpClientDiscovery::find();
-
+    public function __construct(HttpClient $httpClient = null, MessageFactory $messageFactory = null)
+    {
+        $this->httpClient = $httpClient ?: HttpClientDiscovery::find();
         $this->messageFactory = $messageFactory ?: MessageFactoryDiscovery::find();
-        $this->uriFactory = $uriFactory ?: UriFactoryDiscovery::find();
-        $this->httpClient = new PluginClient($httpClient, [
-            new RedirectPlugin(),
-            new AddHostPlugin($this->uriFactory->createUri($hostname)),
-            new PathPrepend(sprintf('/goanywhere/rest/gacmd/%s', $apiVersion)),
-            new AuthenticationPlugin(new BasicAuth($username, $password)),
-            new HeaderDefaultsPlugin([
-                'User-Agent' => 'php-goanywhere (http://github.com/alcohol/php-goanywhere)',
-            ]),
-        ]);
+    }
+
+    /**
+     * @param string $endpoint
+     * @param string $username
+     * @param string $password
+     *
+     * @return \Alcohol\GoAnywhere\Client
+     */
+    public static function create($endpoint, $username, $password)
+    {
+        $httpClient = (new Builder())
+            ->withEndpoint($endpoint)
+            ->withCredentials($username, $password)
+        ;
+
+        return new self($httpClient);
     }
 
     /**

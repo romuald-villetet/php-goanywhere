@@ -20,7 +20,7 @@ final class WebUsers extends HttpApi
         $response = $this->post('/webusers', $parameters);
 
         if (400 <= $response->getStatusCode()) {
-            throw new HttpException($response->getStatusCode(), $response->getBody()->getContents());
+            throw new HttpException($response->getStatusCode(), $response->getBody()->__toString());
         }
     }
 
@@ -39,7 +39,7 @@ final class WebUsers extends HttpApi
         $response = $this->put(sprintf('/webusers/%s/promote', urlencode($username)), $parameters);
 
         if (400 <= $response->getStatusCode()) {
-            throw new HttpException($response->getStatusCode(), $response->getBody()->getContents());
+            throw new HttpException($response->getStatusCode(), $response->getBody()->__toString());
         }
     }
 
@@ -56,7 +56,7 @@ final class WebUsers extends HttpApi
         $response = $this->delete(sprintf('/webusers/%s', urlencode($username)));
 
         if (400 <= $response->getStatusCode()) {
-            throw new HttpException($response->getStatusCode(), $response->getBody()->getContents());
+            throw new HttpException($response->getStatusCode(), $response->getBody()->__toString());
         }
     }
 
@@ -75,7 +75,7 @@ final class WebUsers extends HttpApi
         $response = $this->get(sprintf('/webusers/%s', urlencode($username)));
 
         if (400 <= $response->getStatusCode()) {
-            throw new HttpException($response->getStatusCode(), $response->getBody()->getContents());
+            throw new HttpException($response->getStatusCode(), $response->getBody()->__toString());
         }
 
         return ResponseMediator::getContent($response);
@@ -94,7 +94,7 @@ final class WebUsers extends HttpApi
         $response = $this->post('/webusers', $parameters);
 
         if (400 <= $response->getStatusCode()) {
-            throw new HttpException($response->getStatusCode(), $response->getBody()->getContents());
+            throw new HttpException($response->getStatusCode(), $response->getBody()->__toString());
         }
     }
 
@@ -113,7 +113,7 @@ final class WebUsers extends HttpApi
         $response = $this->post(sprintf('/webusers/%s/promote', urlencode($username)), $parameters);
 
         if (400 <= $response->getStatusCode()) {
-            throw new HttpException($response->getStatusCode(), $response->getBody()->getContents());
+            throw new HttpException($response->getStatusCode(), $response->getBody()->__toString());
         }
     }
 
@@ -132,7 +132,7 @@ final class WebUsers extends HttpApi
         $response = $this->post(sprintf('/webusers/%s/resetpassword', urlencode($username)), $parameters);
 
         if (400 <= $response->getStatusCode()) {
-            throw new HttpException($response->getStatusCode(), $response->getBody()->getContents());
+            throw new HttpException($response->getStatusCode(), $response->getBody()->__toString());
         }
     }
 
@@ -151,7 +151,7 @@ final class WebUsers extends HttpApi
         $response = $this->post(sprintf('/webusers/%s/sshkeys/%s', urlencode($username), urlencode($keyname)));
 
         if (400 <= $response->getStatusCode()) {
-            throw new HttpException($response->getStatusCode(), $response->getBody()->getContents());
+            throw new HttpException($response->getStatusCode(), $response->getBody()->__toString());
         }
     }
 
@@ -170,7 +170,7 @@ final class WebUsers extends HttpApi
         $response = $this->delete(sprintf('/webusers/%s/sshkeys/%s', urlencode($username), urlencode($keyname)));
 
         if (400 <= $response->getStatusCode()) {
-            throw new HttpException($response->getStatusCode(), $response->getBody()->getContents());
+            throw new HttpException($response->getStatusCode(), $response->getBody()->__toString());
         }
     }
 
@@ -189,7 +189,7 @@ final class WebUsers extends HttpApi
         $response = $this->post(sprintf('/webusers/%s/virtualfiles', urlencode($username)), $parameters);
 
         if (400 <= $response->getStatusCode()) {
-            throw new HttpException($response->getStatusCode(), $response->getBody()->getContents());
+            throw new HttpException($response->getStatusCode(), $response->getBody()->__toString());
         }
     }
 
@@ -211,7 +211,7 @@ final class WebUsers extends HttpApi
         );
 
         if (400 <= $response->getStatusCode()) {
-            throw new HttpException($response->getStatusCode(), $response->getBody()->getContents());
+            throw new HttpException($response->getStatusCode(), $response->getBody()->__toString());
         }
     }
 
@@ -230,7 +230,7 @@ final class WebUsers extends HttpApi
         $response = $this->put(sprintf('/webusers/%s/virtualfiles', urlencode($username)), $parameters);
 
         if (400 <= $response->getStatusCode()) {
-            throw new HttpException($response->getStatusCode(), $response->getBody()->getContents());
+            throw new HttpException($response->getStatusCode(), $response->getBody()->__toString());
         }
     }
 
@@ -249,7 +249,7 @@ final class WebUsers extends HttpApi
         $response = $this->post(sprintf('/webusers/%s/virtualfolders', urlencode($username)), $parameters);
 
         if (400 <= $response->getStatusCode()) {
-            throw new HttpException($response->getStatusCode(), $response->getBody()->getContents());
+            throw new HttpException($response->getStatusCode(), $response->getBody()->__toString());
         }
     }
 
@@ -271,7 +271,7 @@ final class WebUsers extends HttpApi
         );
 
         if (400 <= $response->getStatusCode()) {
-            throw new HttpException($response->getStatusCode(), $response->getBody()->getContents());
+            throw new HttpException($response->getStatusCode(), $response->getBody()->__toString());
         }
     }
 
@@ -290,7 +290,7 @@ final class WebUsers extends HttpApi
         $response = $this->put(sprintf('/webusers/%s/virtualfolders', urlencode($username)), $parameters);
 
         if (400 <= $response->getStatusCode()) {
-            throw new HttpException($response->getStatusCode(), $response->getBody()->getContents());
+            throw new HttpException($response->getStatusCode(), $response->getBody()->__toString());
         }
     }
 }
