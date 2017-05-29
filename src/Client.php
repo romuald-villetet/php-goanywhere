@@ -4,6 +4,7 @@ namespace Alcohol\GoAnywhere;
 
 use Alcohol\GoAnywhere\Exception\BadMethodCallException;
 use Alcohol\GoAnywhere\Exception\InvalidArgumentException;
+use Alcohol\GoAnywhere\HttpClient\Builder;
 use Http\Client\HttpClient;
 use Http\Discovery\HttpClientDiscovery;
 use Http\Discovery\MessageFactoryDiscovery;
@@ -33,6 +34,23 @@ final class Client
     {
         $this->httpClient = $httpClient ?: HttpClientDiscovery::find();
         $this->messageFactory = $messageFactory ?: MessageFactoryDiscovery::find();
+    }
+
+    /**
+     * @param string $endpoint
+     * @param string $username
+     * @param string $password
+     *
+     * @return \Alcohol\GoAnywhere\Client
+     */
+    public static function create($endpoint, $username, $password)
+    {
+        $httpClient = (new Builder())
+            ->withEndpoint($endpoint)
+            ->withCredentials($username, $password)
+        ;
+
+        return new self($httpClient);
     }
 
     /**
