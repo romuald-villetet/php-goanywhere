@@ -19,7 +19,7 @@ final class SshKeys extends HttpApi
         $response = $this->post('/sshkeys', $parameters, ['Content-Type' => 'application/json']);
 
         if (400 <= $response->getStatusCode()) {
-            throw new HttpException($response->getStatusCode(), $response->getBody()->getContents());
+            throw new HttpException($response->getStatusCode(), $response->getBody()->__toString());
         }
     }
 
@@ -38,7 +38,7 @@ final class SshKeys extends HttpApi
         $response = $this->delete(sprintf('/sshkeys/%s/%s', urlencode($type), urlencode($name)));
 
         if (400 <= $response->getStatusCode()) {
-            throw new HttpException($response->getStatusCode(), $response->getBody()->getContents());
+            throw new HttpException($response->getStatusCode(), $response->getBody()->__toString());
         }
     }
 }

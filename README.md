@@ -10,8 +10,8 @@ A PHP library providing a client for the REST API of [GoAnywhere](https://www.go
 $ composer require alcohol/php-goanywhere
 ```
 
-> NOTE: This library does not explicitly require a specific client implementation. Pick one that
-> suits you best. See http://docs.php-http.org/en/latest/httplug/users.html for more details.
+> NOTE: This library does not require a specific HTTP client implementation. Pick one that suits you best. See
+> http://docs.php-http.org/en/latest/httplug/users.html for more details.
 
 ## Using
 
@@ -20,11 +20,17 @@ $ composer require alcohol/php-goanywhere
 
 require_once 'vendor/autoload.php';
 
-$client = new Alcohol\GoAnywhere\Client($hostname, $username, $password);
+$httpClient = (new Alcohol\GoAnywhere\HttpClient\Builder())
+    ->withEndpoint('http://localhost:8001/goanywhere/rest/gacmd/v1')
+    ->withCredentials('username', 'password')
+    ->getConfiguredHttpClient()
+;
+
+$apiClient = new Alcohol\GoAnywhere\Client($httpClient);
 
 try {
     $client->webusers()->addUser(['addParameters' => ['template' => 'my-template', 'username' => 'Foo']]);
-} catch (\Alcohol\GoAnywhere\Exception\HttpException $exception) {
+} catch (\Alcohol\GoAnywhere\Exception $exception) {
     // handle errors
 }
 ```
