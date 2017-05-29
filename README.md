@@ -28,7 +28,7 @@ $password = 'bar';
 $httpClient = (new Alcohol\GoAnywhere\HttpClient\Builder())
     ->withEndpoint($endpoint)
     ->withCredentials($username, $password)
-    ->getConfiguredHttpClient();
+    ->createConfiguredHttpClient();
 $apiClient = new Alcohol\GoAnywhere\Client($httpClient);
 
 // convenient shortcut
