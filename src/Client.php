@@ -11,6 +11,7 @@ use Http\Discovery\MessageFactoryDiscovery;
 use Http\Message\MessageFactory;
 
 /**
+ * @method Api\Jobs jobs()
  * @method Api\Monitors monitors()
  * @method Api\Projects projects()
  * @method Api\Resources resources()
@@ -74,6 +75,9 @@ final class Client
     public function api($name)
     {
         switch (strtolower($name)) {
+            case 'jobs':
+                return new Api\Jobs($this->httpClient, $this->messageFactory);
+
             case 'monitors':
                 return new Api\Monitors($this->httpClient, $this->messageFactory);
 
