@@ -78,4 +78,21 @@ final class Projects extends HttpApi
             throw new HttpException($response->getStatusCode(), $response->getBody()->__toString());
         }
     }
+
+    /**
+     * Start a GoAnywhere project.
+     *
+     * @param array $parameters
+     *   An array representation of the expected JSON body
+     *
+     * @throws \Alcohol\GoAnywhere\Exception\HttpException
+     */
+    public function runProject(array $parameters)
+    {
+        $response = $this->post('/projects', $parameters);
+
+        if (400 <= $response->getStatusCode()) {
+            throw new HttpException($response->getStatusCode(), $response->getBody()->__toString());
+        }
+    }
 }
