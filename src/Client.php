@@ -16,6 +16,7 @@ use Http\Message\MessageFactory;
  * @method Api\Resources resources()
  * @method Api\Schedules schedules()
  * @method Api\SshKeys sshkeys()
+ * @method Api\Triggers triggers()
  * @method Api\WebGroups webgroups()
  * @method Api\WebUsers webusers()
  */
@@ -87,6 +88,9 @@ final class Client
 
             case 'sshkeys':
                 return new Api\SshKeys($this->httpClient, $this->messageFactory);
+
+            case 'triggers':
+                return new Api\Triggers($this->httpClient, $this->messageFactory);
 
             case 'webgroups':
                 return new Api\WebGroups($this->httpClient, $this->messageFactory);
