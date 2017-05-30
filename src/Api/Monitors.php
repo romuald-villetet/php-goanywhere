@@ -72,7 +72,7 @@ final class Monitors extends HttpApi
      * @param $type
      *   The type of monitor to promote
      * @param string $monitor
-     *   The name of the user to promote
+     *   The name of the monitor to promote
      * @param array $parameters
      *   An array representation of the expected JSON body
      *
