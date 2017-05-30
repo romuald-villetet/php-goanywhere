@@ -152,6 +152,7 @@ final class Builder
 
         return $this;
     }
+
     /**
      * @param \Http\Client\Common\Plugin[] $plugin
      *
