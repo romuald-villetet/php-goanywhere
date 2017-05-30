@@ -10,7 +10,7 @@ final class Resources extends HttpApi
     /**
      * Delete a resource.
      *
-     * @param $type
+     * @param string $type
      *   The type of resource do delete
      * @param string $resource
      *   The name of the resource to delete
@@ -29,7 +29,7 @@ final class Resources extends HttpApi
     /**
      * Export a resource as XML.
      *
-     * @param $type
+     * @param string $type
      *   The type of resource do delete
      * @param string $resource
      *   The name of the resource to export
@@ -69,7 +69,7 @@ final class Resources extends HttpApi
     /**
      * Promote a resource from one GoAnywhere server to another GoAnywhere server.
      *
-     * @param $type
+     * @param string $type
      *   The type of resource to promote
      * @param string $resource
      *   The name of the resource to promote

@@ -10,7 +10,7 @@ final class Monitors extends HttpApi
     /**
      * Delete a monitor.
      *
-     * @param $type
+     * @param string $type
      *   The type of monitor do delete
      * @param string $monitor
      *   The name of the monitor to delete
@@ -29,7 +29,7 @@ final class Monitors extends HttpApi
     /**
      * Export a monitor as XML.
      *
-     * @param $type
+     * @param string $type
      *   The type of monitor do delete
      * @param string $monitor
      *   The name of the monitor to export
@@ -69,7 +69,7 @@ final class Monitors extends HttpApi
     /**
      * Promote a monitor from one GoAnywhere server to another GoAnywhere server.
      *
-     * @param $type
+     * @param string $type
      *   The type of monitor to promote
      * @param string $monitor
      *   The name of the monitor to promote
