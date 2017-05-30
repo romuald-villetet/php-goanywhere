@@ -13,6 +13,7 @@ use Http\Message\MessageFactory;
 /**
  * @method Api\Monitors monitors()
  * @method Api\Projects projects()
+ * @method Api\Resources resources()
  * @method Api\SshKeys sshkeys()
  * @method Api\WebGroups webgroups()
  * @method Api\WebUsers webusers()
@@ -76,6 +77,9 @@ final class Client
 
             case 'projects':
                 return new Api\Projects($this->httpClient, $this->messageFactory);
+
+            case 'resources':
+                return new Api\Resources($this->httpClient, $this->messageFactory);
 
             case 'sshkeys':
                 return new Api\SshKeys($this->httpClient, $this->messageFactory);
