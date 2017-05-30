@@ -70,7 +70,7 @@ final class Client
      */
     public function api($name)
     {
-        switch ($name) {
+        switch (strtolower($name)) {
             case 'monitors':
                 return new Api\Monitors($this->httpClient, $this->messageFactory);
 
