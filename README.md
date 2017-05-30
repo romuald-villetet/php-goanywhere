@@ -35,8 +35,8 @@ $apiClient = new Alcohol\GoAnywhere\Client($httpClient);
 $apiClient = Alcohol\GoAnywhere\Client::create($endpoint, $username, $password);
 
 try {
-    $client->webusers()->addUser(['addParameters' => ['template' => 'my-template', 'username' => 'Foo']]);
-} catch (\Alcohol\GoAnywhere\Exception $exception) {
+    $apiClient->webusers()->addUser(['addParameters' => ['template' => 'my-template', 'username' => 'Foo']]);
+} catch (Alcohol\GoAnywhere\Exception $exception) {
     // handle errors
 }
 ```
