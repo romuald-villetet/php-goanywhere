@@ -7,7 +7,7 @@ A PHP library providing a client for the REST API of [GoAnywhere](https://www.go
 ## Installing
 
 ``` sh
-$ composer require alcohol/php-goanywhere
+composer require alcohol/php-goanywhere
 ```
 
 > NOTE: This library does not require a specific HTTP client implementation. Pick one that suits you best. See
@@ -35,7 +35,7 @@ $apiClient = new Alcohol\GoAnywhere\Client($httpClient);
 $apiClient = Alcohol\GoAnywhere\Client::create($endpoint, $username, $password);
 
 try {
-    $apiClient->webusers()->addUser(['addParameters' => ['template' => 'my-template', 'username' => 'Foo']]);
+    $apiClient->WebUsers()->addUser(['addParameters' => ['template' => 'my-template', 'username' => 'Foo']]);
 } catch (Alcohol\GoAnywhere\Exception $exception) {
     // handle errors
 }
