@@ -2,7 +2,7 @@
 
 A PHP library providing a client for the REST API of [GoAnywhere](https://www.goanywhere.com).
 
-[![License](https://img.shields.io/packagist/l/alcohol/php-goanywhere.svg?style=flat-square)](https://packagist.org/packages/alcohol/go-anywhere)
+[![License](https://img.shields.io/packagist/l/alcohol/php-goanywhere.svg?style=flat-square)](https://packagist.org/packages/alcohol/php-goanywhere)
 
 ## Installing
 
@@ -43,7 +43,7 @@ try {
 
 ## Disclaimer
 
-The GoAnywhere REST API is not very consistent, nor would I qualify their documentation as "complete"¹. This 
+The GoAnywhere REST API is not very consistent, nor would I qualify their documentation as "complete"¹. This
 implementation therefor is made on a best-effort basis only. Should you run into any problems however, we can
 look into resolving them together. Please open an issue or submit a pull-request.
 
