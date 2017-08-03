@@ -54,7 +54,7 @@ final class Client
         $httpClient = (new Builder())
             ->withEndpoint($endpoint)
             ->withCredentials($username, $password)
-        ;
+            ->createConfiguredHttpClient();
 
         return new self($httpClient);
     }
